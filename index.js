@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.kj2w8eq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
-// Create a MongoClient with a MongoClientOptions 
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
 
 const client = new MongoClient(uri, {
   serverApi: {
@@ -28,7 +28,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    // Connect the client to the server	(optional starting in v4.7)
+    // Connect the client to the server	
 
     const UserCraftCollection = client
       .db('ArtisticAlchemy')
@@ -72,7 +72,7 @@ async function run() {
       const result = await UserCraftCollection.findOne(query);
       res.send(result);
     });
-
+    
     app.get('/update/:id', async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
