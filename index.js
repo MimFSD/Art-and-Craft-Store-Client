@@ -84,7 +84,7 @@ async function run() {
       res.send(result);
     });
 
-
+    
 
     app.get('/myCraft/:email', async (req, res) => {
       const email = req.params.email;
@@ -100,8 +100,6 @@ async function run() {
       const result = await UserCraftCollection.insertOne(newCraft);
       res.send(result);
     });
-
-    
 
     app.put('/update/:id', async (req, res) => {
       const id = req.params.id;
