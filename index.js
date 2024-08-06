@@ -29,8 +29,8 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
 
+
     
-    // Connect the client to the server	(optional starting in v4.7)
 
     const UserCraftCollection = client
       .db('ArtisticAlchemy')
@@ -58,6 +58,8 @@ async function run() {
       const result = await cursor.toArray();
       res.send(result);
     });
+
+
     app.get('/allArtCraft/sort/:email/:customization', async (req, res) => {
       const customization = req.params.customization;
       const email = req.params.email;
@@ -82,6 +84,8 @@ async function run() {
       res.send(result);
     });
 
+
+
     app.get('/myCraft/:email', async (req, res) => {
       const email = req.params.email;
       const query = { email: email };
@@ -96,6 +100,8 @@ async function run() {
       const result = await UserCraftCollection.insertOne(newCraft);
       res.send(result);
     });
+
+    
 
     app.put('/update/:id', async (req, res) => {
       const id = req.params.id;
